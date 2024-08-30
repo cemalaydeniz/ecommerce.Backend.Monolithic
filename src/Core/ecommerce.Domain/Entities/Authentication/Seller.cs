@@ -5,7 +5,7 @@ using ecommerce.Domain.Entities.Authentication.ValueObjects;
 
 namespace ecommerce.Domain.Entities.Authentication
 {
-    public class Seller
+    public class Seller : User
     {
         public string? BusinessName { get; set; }
         public string? ContactName { get; set; }
