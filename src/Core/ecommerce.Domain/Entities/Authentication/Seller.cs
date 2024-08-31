@@ -20,6 +20,6 @@ namespace ecommerce.Domain.Entities.Authentication
         public Address BusinessAddress { get; set; }
         public Guid BillingAddressId { get; set; }
         public Address BillingAddress { get; set; }
-        public ICollection<BusinessUploadedFile> UploadedFiles { get; set; }
+        public ICollection<SellerUploadedFile> UploadedFiles { get; set; }
     }
 }

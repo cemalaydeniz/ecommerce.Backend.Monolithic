@@ -4,7 +4,7 @@ using ecommerce.Domain.Entities.Common;
 
 namespace ecommerce.Domain.Entities.Authentication
 {
-    public class BusinessUploadedFile : UploadedFile
+    public class SellerUploadedFile : UploadedFile
     {
         public string Description { get; set; }
     }
