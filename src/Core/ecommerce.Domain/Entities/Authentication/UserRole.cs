@@ -5,9 +5,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ecommerce.Domain.Entities.Authentication
 {
-    public class UserRole : BaseEntity<Guid>
+    public class UserRole : BaseEntity<Guid>, ISoftDelete
     {
         public string Name { get; set; }
+        public bool IsDeleted { get; private set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
