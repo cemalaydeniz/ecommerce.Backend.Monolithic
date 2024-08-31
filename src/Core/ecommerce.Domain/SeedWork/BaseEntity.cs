@@ -5,7 +5,7 @@ namespace ecommerce.Domain.SeedWork
     public abstract class BaseEntity<TKey> : IEquatable<BaseEntity<TKey>>
         where TKey : notnull
     {
-        public TKey Id { get; private set; }
+        public TKey Id { get; set; }
         public DateTime CreatedDate { get; private set; }
 
         public override bool Equals(object? obj)
