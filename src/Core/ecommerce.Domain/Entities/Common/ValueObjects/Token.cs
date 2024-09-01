@@ -9,7 +9,7 @@ namespace ecommerce.Domain.Entities.Common.ValueObjects
         public string ValueEncypted { get; set; }
         public DateTime ExpirationDate { get; set; }
 
-        public override IEnumerable<object> GetEqualityComponents()
+        public override IEnumerable<object?> GetEqualityComponents()
         {
             yield return ValueEncypted;
             yield return ExpirationDate;

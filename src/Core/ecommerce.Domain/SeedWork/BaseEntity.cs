@@ -20,8 +20,8 @@ namespace ecommerce.Domain.SeedWork
 
         public static bool operator ==(BaseEntity<TKey>? left, BaseEntity<TKey>? right)
         {
-            if (left == null && right == null) return true;
-            if (left != null && right != null) return left.Equals(right);
+            if (left is null && right is null) return true;
+            if (left is not null && right is not null) return left.Equals(right);
             return false;
         }
 

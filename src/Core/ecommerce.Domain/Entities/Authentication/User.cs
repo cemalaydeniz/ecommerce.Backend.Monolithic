@@ -5,7 +5,7 @@ using ecommerce.Domain.SeedWork;
 
 namespace ecommerce.Domain.Entities.Authentication
 {
-    public class User : BaseEntity<Guid>, IUpdateDateAudit
+    public class User : BaseEntity<Guid>, IUpdateDateAudit, ISoftDelete
     {
         public string? Email { get; set; }
         public string? PasswordHash { get; set; }
@@ -20,6 +20,7 @@ namespace ecommerce.Domain.Entities.Authentication
         public DateTime UpdatedDate { get; private set; }
         public EAccountStatus AccountStatus { get; set; }
         public bool IsDeleted { get; private set; }
+        public DateTime SoftDeletedDate { get; private set; }
 
         // Relations
         public ICollection<UserRole> UserRoles { get; set; }

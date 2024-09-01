@@ -2,7 +2,7 @@
 {
     public abstract class ValueObject : IEquatable<ValueObject>
     {
-        public abstract IEnumerable<object> GetEqualityComponents();
+        public abstract IEnumerable<object?> GetEqualityComponents();
 
         public override bool Equals(object? obj)
         {
@@ -16,8 +16,8 @@
 
         public static bool operator== (ValueObject? left, ValueObject? right)
         {
-            if (left == null && right == null) return true;
-            if (left != null && right != null) return left.Equals(right);
+            if (left is null && right is null) return true;
+            if (left is not null && right is not null) return left.Equals(right);
             return false;
         }
 

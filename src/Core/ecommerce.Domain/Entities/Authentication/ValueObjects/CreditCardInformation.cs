@@ -6,12 +6,12 @@ namespace ecommerce.Domain.Entities.Authentication.ValueObjects
 {
     public class CreditCardInformation : ValueObject
     {
-        public string CardHolderNameEncrypted { get; set; }
-        public string CardNumberEncrypted { get; set; }
-        public string ExpirationDateEncrypted { get; set; }
-        public string CvvCodeEncrypted { get; set; }
+        public string? CardHolderNameEncrypted { get; set; }
+        public string? CardNumberEncrypted { get; set; }
+        public string? ExpirationDateEncrypted { get; set; }
+        public string? CvvCodeEncrypted { get; set; }
 
-        public override IEnumerable<object> GetEqualityComponents()
+        public override IEnumerable<object?> GetEqualityComponents()
         {
             yield return CardHolderNameEncrypted;
             yield return CardNumberEncrypted;

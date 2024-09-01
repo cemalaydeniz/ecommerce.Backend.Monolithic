@@ -6,6 +6,7 @@ namespace ecommerce.Domain.Entities.Account
 {
     public class Address : BaseEntity<Guid>, IUpdateDateAudit
     {
+        public string? Title { get; set; }
         public string StreetLine1 { get; set; }
         public string? StreetLine2 { get; set; }
         public string StateOrProvince { get; set; }

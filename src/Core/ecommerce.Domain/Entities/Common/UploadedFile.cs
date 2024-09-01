@@ -5,7 +5,7 @@ using ecommerce.Domain.SeedWork;
 
 namespace ecommerce.Domain.Entities.Common
 {
-    public abstract class UploadedFile : BaseEntity<Guid>
+    public class UploadedFile : BaseEntity<Guid>
     {
         public EStorageType StorageType { get; set; }
         public string Link { get; set; }
