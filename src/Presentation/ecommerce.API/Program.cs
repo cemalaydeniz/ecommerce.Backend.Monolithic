@@ -4,7 +4,9 @@ using ecommerce.Persistence.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 //~ Begin - Configurations
-builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(nameof(ConnectionStrings)));
+var connectionStringConfig = builder.Configuration.GetSection(nameof(ConnectionStrings));
+
+builder.Services.Configure<ConnectionStrings>(connectionStringConfig);
 //~ End
 
 //~ Begin - Services
@@ -12,7 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddPersistenceServices(builder.Configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>());
+builder.Services.AddPersistenceServices(connectionStringConfig.Get<ConnectionStrings>());
 //~ End
 
 var app = builder.Build();
