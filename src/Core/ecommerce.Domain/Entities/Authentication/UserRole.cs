@@ -9,7 +9,7 @@ namespace ecommerce.Domain.Entities.Authentication
     {
         public string Name { get; set; }
         public bool IsDeleted { get; private set; }
-        public DateTime SoftDeletedDate { get; private set; }
+        public DateTime? SoftDeletedDate { get; private set; }
         public uint RowVersion { get; set; }
 
         // Relations

@@ -13,6 +13,6 @@ namespace ecommerce.Domain.Entities.Account
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public DateTime UpdatedDate { get; private set; }
+        public DateTime? UpdatedDate { get; private set; }
     }
 }

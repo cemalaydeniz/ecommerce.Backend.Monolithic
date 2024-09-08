@@ -2,6 +2,6 @@
 {
     public interface IUpdateDateAudit
     {
-        public DateTime UpdatedDate { get; }
+        public DateTime? UpdatedDate { get; }
     }
 }

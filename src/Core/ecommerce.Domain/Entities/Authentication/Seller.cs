@@ -1,6 +1,7 @@
 ﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
 using ecommerce.Domain.Entities.Account;
+using ecommerce.Domain.Entities.Authentication.Enums;
 using ecommerce.Domain.Entities.Authentication.ValueObjects;
 
 namespace ecommerce.Domain.Entities.Authentication
@@ -14,6 +15,7 @@ namespace ecommerce.Domain.Entities.Authentication
         public string? TinNumber { get; set; }
         public string? VatNumber { get; set; }
         public CreditCardInformation CreditCardInformation { get; set; }
+        public EAccountStatus AccountStatus { get; set; }
 
         // Relations
         public Guid? BusinessAddressId { get; set; }

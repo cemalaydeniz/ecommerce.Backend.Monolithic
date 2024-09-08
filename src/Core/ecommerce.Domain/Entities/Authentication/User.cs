@@ -1,6 +1,5 @@
 ﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-using ecommerce.Domain.Entities.Authentication.Enums;
 using ecommerce.Domain.SeedWork;
 
 namespace ecommerce.Domain.Entities.Authentication
@@ -14,13 +13,12 @@ namespace ecommerce.Domain.Entities.Authentication
         public bool IsPhoneNumberConfirmed { get; set; }
         public bool IsTwoFactorEnabled { get; set; }
         public int AccessFailCount { get; set; }
-        public DateTime LockoutEndDate { get; set; }
+        public DateTime? LockoutEndDate { get; set; }
         public bool IsLockoutEnabled { get; set; }
         public Guid SecurityStamp { get; set; }
-        public DateTime UpdatedDate { get; private set; }
-        public EAccountStatus AccountStatus { get; set; }
+        public DateTime? UpdatedDate { get; private set; }
         public bool IsDeleted { get; private set; }
-        public DateTime SoftDeletedDate { get; private set; }
+        public DateTime? SoftDeletedDate { get; private set; }
 
         // Relations
         public ICollection<UserRole> UserRoles { get; set; }

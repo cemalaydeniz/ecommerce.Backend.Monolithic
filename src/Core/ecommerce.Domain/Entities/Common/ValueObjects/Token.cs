@@ -12,7 +12,7 @@ namespace ecommerce.Domain.Entities.Common.ValueObjects
         public override IEnumerable<object?> GetEqualityComponents()
         {
             yield return ValueEncypted;
-            yield return ExpirationDate;
+            yield return ExpirationDate.ToShortDateString() + ExpirationDate.ToShortTimeString();
         }
     }
 }

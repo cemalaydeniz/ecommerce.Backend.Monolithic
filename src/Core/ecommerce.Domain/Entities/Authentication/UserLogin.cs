@@ -6,11 +6,12 @@ using System.Net;
 
 namespace ecommerce.Domain.Entities.Authentication
 {
-    public class UserLogin : BaseEntity<Guid>
+    public class UserLogin : BaseEntity<Guid>, IUpdateDateAudit
     {
         public Token RefreshToken { get; set; }
         public IPAddress IpAddress { get; set; }
         public string? DeviceInformation { get; set; }
+        public DateTime? UpdatedDate { get; private set; }
 
         // Relations
         public Guid UserId { get; set; }
