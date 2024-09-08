@@ -1,5 +1,7 @@
 ﻿using ecommerce.Application.Validations.Constants;
 using ecommerce.Domain.Entities.Authentication;
+using ecommerce.Domain.Entities.Authentication.Enums;
+using ecommerce.Persistence.Conversions;
 using ecommerce.Persistence.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -32,6 +34,9 @@ namespace ecommerce.Persistence.Configurations.Authentication
                 .HasMaxLength(ValidationConstants.VatNumber.MaxLength);
 
             builder.ComplexProperty(s => s.CreditCardInformation);
+
+            builder.Property(s => s.AccountStatus)
+                .HasConversion<EnumConversion<EAccountStatus>>();
 
             // Relations
             builder.HasOne(s => s.BusinessAddress)

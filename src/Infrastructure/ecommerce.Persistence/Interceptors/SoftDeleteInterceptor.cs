@@ -24,20 +24,21 @@ namespace ecommerce.Persistence.Interceptors
             if (eventData.Context == null)
                 return;
 
-            var entities = eventData.Context.ChangeTracker.Entries()
+            var entries = eventData.Context.ChangeTracker.Entries()
                 .Where(e => e.State == EntityState.Deleted)
-                .Select(e => e.Entity)
                 .ToList();
 
-            if (entities.Count == 0)
+            if (entries.Count == 0)
                 return;
 
-            foreach (var entity in entities)
+            foreach (var entry in entries)
             {
+                var entity = entry.Entity;
+
                 if (entity is ISoftDelete)
                 {
-                    ReflectionHelper.AssignValueToPrivateSetterProperty(entity, nameof(ISoftDelete.IsDeleted), true);
-                    ReflectionHelper.AssignValueToPrivateSetterProperty(entity, nameof(ISoftDelete.SoftDeletedDate), DateTime.UtcNow);
+                    ReflectionHelper.SetValueofProperty(entity, nameof(ISoftDelete.IsDeleted), true);
+                    ReflectionHelper.SetValueofProperty(entity, nameof(ISoftDelete.SoftDeletedDate), DateTime.UtcNow);
 
                     eventData.Context.Entry(entity).State = EntityState.Modified;
                 }

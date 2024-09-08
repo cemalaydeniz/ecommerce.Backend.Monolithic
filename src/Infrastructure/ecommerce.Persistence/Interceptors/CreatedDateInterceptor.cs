@@ -24,17 +24,16 @@ namespace ecommerce.Persistence.Interceptors
             if (eventData.Context == null)
                 return;
 
-            var entities = eventData.Context.ChangeTracker.Entries()
+            var entries = eventData.Context.ChangeTracker.Entries()
                 .Where(e => e.State == EntityState.Added)
-                .Select(e => e.Entity)
                 .ToList();
 
-            if (entities.Count == 0)
+            if (entries.Count == 0)
                 return;
 
-            foreach (var entity in entities)
+            foreach (var entry in entries)
             {
-                ReflectionHelper.AssignValueToPrivateSetterProperty(entity, nameof(BaseEntity<Guid>.CreatedDate), DateTime.UtcNow);
+                ReflectionHelper.SetValueofProperty(entry.Entity, nameof(BaseEntity<Guid>.CreatedDate), DateTime.UtcNow);
             }
         }
     }

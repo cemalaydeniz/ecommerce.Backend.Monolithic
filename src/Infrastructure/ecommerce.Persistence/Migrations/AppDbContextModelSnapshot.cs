@@ -37,6 +37,13 @@ namespace ecommerce.Persistence.Migrations
                     b.HasIndex("UsersId");
 
                     b.ToTable("UserUserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            UserRolesId = new Guid("a4726687-a484-47be-830c-77da7d89e798"),
+                            UsersId = new Guid("ce93dd1a-06e7-4ea3-aa13-93065d447264")
+                        });
                 });
 
             modelBuilder.Entity("ecommerce.Domain.Entities.Account.Address", b =>
@@ -79,7 +86,7 @@ namespace ecommerce.Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("ZipCode")
@@ -102,10 +109,6 @@ namespace ecommerce.Persistence.Migrations
 
                     b.Property<int>("AccessFailCount")
                         .HasColumnType("integer");
-
-                    b.Property<string>("AccountStatus")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
@@ -130,7 +133,7 @@ namespace ecommerce.Persistence.Migrations
                     b.Property<bool>("IsTwoFactorEnabled")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("LockoutEndDate")
+                    b.Property<DateTime?>("LockoutEndDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("PasswordHash")
@@ -143,10 +146,10 @@ namespace ecommerce.Persistence.Migrations
                     b.Property<Guid>("SecurityStamp")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("SoftDeletedDate")
+                    b.Property<DateTime?>("SoftDeletedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("UpdatedDate")
+                    b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -161,9 +164,8 @@ namespace ecommerce.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("97ad4696-007b-42b9-8121-75d6538d7463"),
+                            Id = new Guid("ce93dd1a-06e7-4ea3-aa13-93065d447264"),
                             AccessFailCount = 0,
-                            AccountStatus = "Active",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "placeholder@example.com",
                             IsDeleted = false,
@@ -171,11 +173,8 @@ namespace ecommerce.Persistence.Migrations
                             IsLockoutEnabled = false,
                             IsPhoneNumberConfirmed = false,
                             IsTwoFactorEnabled = false,
-                            LockoutEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             PasswordHash = "placeholder",
-                            SecurityStamp = new Guid("1523dd32-b6d5-46d4-9f85-3bd123f08b66"),
-                            SoftDeletedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            SecurityStamp = new Guid("767449dc-581c-4dc1-b9bb-8e1d5c05e027")
                         });
                 });
 
@@ -195,6 +194,9 @@ namespace ecommerce.Persistence.Migrations
                     b.Property<IPAddress>("IpAddress")
                         .IsRequired()
                         .HasColumnType("inet");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -242,7 +244,7 @@ namespace ecommerce.Persistence.Migrations
                         .HasColumnType("xid")
                         .HasColumnName("xmin");
 
-                    b.Property<DateTime>("SoftDeletedDate")
+                    b.Property<DateTime?>("SoftDeletedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -255,30 +257,27 @@ namespace ecommerce.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6382846b-fe71-492b-95f1-c42dae9563c3"),
+                            Id = new Guid("a4726687-a484-47be-830c-77da7d89e798"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             Name = "super admin",
-                            RowVersion = 0u,
-                            SoftDeletedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            RowVersion = 0u
                         },
                         new
                         {
-                            Id = new Guid("a20a6f58-fba0-4c69-be98-8a9b53939883"),
+                            Id = new Guid("1b9ea709-422f-4f63-b92c-e5d687bfefd5"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             Name = "admin",
-                            RowVersion = 0u,
-                            SoftDeletedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            RowVersion = 0u
                         },
                         new
                         {
-                            Id = new Guid("d54b787c-9e59-4e24-b2a3-5c809800790a"),
+                            Id = new Guid("3c05d569-4f14-4b71-90b1-9c29fe919a22"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
                             Name = "seller",
-                            RowVersion = 0u,
-                            SoftDeletedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            RowVersion = 0u
                         });
                 });
 
@@ -362,6 +361,10 @@ namespace ecommerce.Persistence.Migrations
             modelBuilder.Entity("ecommerce.Domain.Entities.Authentication.Seller", b =>
                 {
                     b.HasBaseType("ecommerce.Domain.Entities.Authentication.User");
+
+                    b.Property<string>("AccountStatus")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("BillingAddressId")
                         .HasColumnType("uuid");

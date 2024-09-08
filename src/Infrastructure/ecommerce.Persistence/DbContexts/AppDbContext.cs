@@ -4,8 +4,9 @@ using ecommerce.Domain.Entities.Common;
 using ecommerce.Persistence.Configurations.Account;
 using ecommerce.Persistence.Configurations.Authentication;
 using ecommerce.Persistence.Configurations.Common;
-using ecommerce.Persistence.Filters;
+using ecommerce.Persistence.GlobalConfigurations.Filters;
 using ecommerce.Persistence.Interceptors;
+using ecommerce.Persistence.SeedData;
 using Microsoft.EntityFrameworkCore;
 
 namespace ecommerce.Persistence.DbContexts
@@ -33,8 +34,6 @@ namespace ecommerce.Persistence.DbContexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.AddGlobalSoftDeleteQueryFilter();
-
             modelBuilder.ApplyConfiguration(new UserEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new UserRoleEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new UserLoginEntityTypeConfiguration());
@@ -46,13 +45,17 @@ namespace ecommerce.Persistence.DbContexts
             modelBuilder.ApplyConfiguration(new AddressEntityTypeConfiguration());
 
             modelBuilder.ApplyConfiguration(new UploadedFileEntityTypeConfiguration());
+
+
+            modelBuilder.AddGlobalSoftDeleteQueryFilter();
+
+            var roles = modelBuilder.SeedUserRoles();
+            modelBuilder.SeedSuperAdmin(roles.Where(r => r.Name == "super admin").FirstOrDefault()!);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-
-            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution);
 
             optionsBuilder.AddInterceptors(new CreatedDateInterceptor());
             optionsBuilder.AddInterceptors(new UpdateDateAuditInterceptor());

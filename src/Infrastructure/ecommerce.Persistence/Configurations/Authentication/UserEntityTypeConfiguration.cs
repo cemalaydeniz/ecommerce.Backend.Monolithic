@@ -1,6 +1,5 @@
 ﻿using ecommerce.Application.Validations.Constants;
 using ecommerce.Domain.Entities.Authentication;
-using ecommerce.Domain.Entities.Authentication.Enums;
 using ecommerce.Persistence.Conversions;
 using ecommerce.Persistence.DbContexts;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +22,6 @@ namespace ecommerce.Persistence.Configurations.Authentication
 
             builder.Property(u => u.PhoneNumber)
                 .HasMaxLength(ValidationConstants.PhoneNumber.MaxLength);
-
-            builder.Property(u => u.AccountStatus)
-                .HasConversion<EnumConversion<EAccountStatus>>();
 
             // Relations
             builder.HasMany(u => u.UserRoles)

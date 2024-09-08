@@ -5,28 +5,31 @@ namespace ecommerce.Persistence.SeedData
 {
     public static class UserRoleSeedData
     {
-        [Obsolete("This is used to generate migration code. The adjustments are in the migration file called SeedData")]
-        public static void SeedUserRoles(this ModelBuilder modelBuilder)
+        public static List<UserRole> SeedUserRoles(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserRole>()
-                .HasData(new List<UserRole>()
+            List<UserRole> roles = new List<UserRole>()
+            {
+                new UserRole()
                 {
-                    new UserRole()
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = "super admin"
-                    },
-                    new UserRole()
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = "admin"
-                    },
-                    new UserRole()
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = "seller"
-                    }
-                });
+                    Id = Guid.NewGuid(),
+                    Name = "super admin"
+                },
+                new UserRole()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "admin"
+                },
+                new UserRole()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "seller"
+                }
+            };
+
+            modelBuilder.Entity<UserRole>()
+                .HasData(roles);
+
+            return roles;
         }
     }
 }
