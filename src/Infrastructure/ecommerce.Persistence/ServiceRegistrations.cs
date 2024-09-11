@@ -10,10 +10,17 @@ namespace ecommerce.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services, ConnectionStrings? connectionStrings)
         {
-            if (connectionStrings == null)
-                throw new ConfigurationException("Connection string configuration is not found");
+            CheckConnectionStrings(connectionStrings);
 
-            services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionStrings.App));
+            services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionStrings!.App));
+        }
+
+        private static void CheckConnectionStrings(ConnectionStrings? connectionStrings)
+        {
+            if (connectionStrings == null ||
+                connectionStrings.App == null ||
+                connectionStrings.AppTest == null)
+                throw new ConfigurationException($"{nameof(ConnectionStrings)} configuration is not found or is not set properly");
         }
     }
 }
