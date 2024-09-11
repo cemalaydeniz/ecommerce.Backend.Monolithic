@@ -387,7 +387,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentic
             await buyerRepository.SaveChangesAsync();
 
             // Act
-            var result = await buyerRepository.GetAllAddressesByEmail(buyer.Email, new Pagination());
+            var result = await buyerRepository.GetAllAddressesByEmail(buyer.Email!, new Pagination());
 
             // Assert
             Assert.Equal(3, result.Count());
@@ -405,7 +405,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentic
             await buyerRepository.SaveChangesAsync();
 
             // Act
-            var result = await buyerRepository.GetAllAddressesByEmail(buyer.Email, new Pagination());
+            var result = await buyerRepository.GetAllAddressesByEmail(buyer.Email!, new Pagination());
 
             // Assert
             Assert.Empty(result);
