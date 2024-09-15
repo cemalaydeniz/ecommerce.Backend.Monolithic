@@ -3,8 +3,8 @@ This is the monolitchic backend version of the project. The entire e-commerce pr
 
 Currently available projects are:<br/>
 [E-Commerce Backend Monolithic](https://github.com/cemalaydeniz/ecommerce.Backend.Monolithic) (.Net Core Web API 8.0)<br/>
-[E-Commerce Frontend Web](https://github.com/cemalaydeniz/ecommerce.Web) (Angular and Bootstrap - No Standalone)<br/>
-[E-Commerce Frontend Admin Console](https://github.com/cemalaydeniz/ecommerce.Admin) (Angular and Angular Material - Standalone)<br/>
+[E-Commerce Frontend Web](https://github.com/cemalaydeniz/ecommerce.Web) (Angular and Bootstrap)<br/>
+[E-Commerce Frontend Admin Console](https://github.com/cemalaydeniz/ecommerce.Admin) (Angular and Angular Material)<br/>
 
 ## To-Do List
 These are the features I am planning to add/implement/create. The entries in the to-do list have no priorities over each other and they might be added out of order.
