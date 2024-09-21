@@ -1,4 +1,4 @@
-﻿namespace ecommerce.Application.Models.Common
+﻿namespace ecommerce.Application.ViewModels.Common
 {
     public class Pagination
     {

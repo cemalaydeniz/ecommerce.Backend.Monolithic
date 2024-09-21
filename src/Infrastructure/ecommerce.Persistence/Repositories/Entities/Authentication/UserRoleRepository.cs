@@ -1,4 +1,4 @@
-﻿using ecommerce.Application.Models.Common;
+﻿using ecommerce.Application.ViewModels.Common;
 using ecommerce.Application.Repositories.Entities.Authentication;
 using ecommerce.Domain.Entities.Authentication;
 using ecommerce.Persistence.DbContexts;

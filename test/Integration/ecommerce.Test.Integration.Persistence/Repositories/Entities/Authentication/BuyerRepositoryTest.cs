@@ -6,7 +6,7 @@ using ecommerce.Test.Utility;
 using ecommerce.Test.Utility.Fixtures;
 using Microsoft.EntityFrameworkCore;
 using ecommerce.Test.Utility.Entities.Account;
-using ecommerce.Application.Models.Common;
+using ecommerce.Application.ViewModels.Common;
 
 namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentication
 {
