@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace ecommerce.Test.Utility
 {
-    public static class ConfigurationsHelper
+    public static class ConfigurationHelper
     {
         private static IConfiguration? _configuration = null;
         private static IConfiguration Configuration

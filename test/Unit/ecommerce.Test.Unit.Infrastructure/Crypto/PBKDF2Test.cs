@@ -11,7 +11,7 @@ namespace ecommerce.Test.Unit.Infrastructure.Crypto
 
         public PBKDF2Test(PBKDF2Fixture pbkdf2OptionsFixture)
         {
-            pbkdf2 = new PBKDF2(Options.Create(pbkdf2OptionsFixture.pbkdf2Options));
+            pbkdf2 = new PBKDF2(Options.Create(pbkdf2OptionsFixture.Pbkdf2Options));
         }
 
         [Theory]

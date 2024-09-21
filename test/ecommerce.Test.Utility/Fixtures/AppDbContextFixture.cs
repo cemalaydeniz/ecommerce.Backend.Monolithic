@@ -12,7 +12,7 @@ namespace ecommerce.Test.Utility.Fixtures
 
         public async Task InitializeAsync()
         {
-            var connectionStrings = ConfigurationsHelper.GetOption<ConnectionStrings>(nameof(ConnectionStrings));
+            var connectionStrings = ConfigurationHelper.GetOption<ConnectionStrings>(nameof(ConnectionStrings));
 
             var options = new DbContextOptionsBuilder<AppDbContext>()
                 .UseNpgsql(connectionStrings!.AppTest, options =>

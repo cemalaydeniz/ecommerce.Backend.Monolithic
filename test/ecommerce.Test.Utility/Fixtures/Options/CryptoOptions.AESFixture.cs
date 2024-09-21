@@ -4,11 +4,11 @@ namespace ecommerce.Test.Utility.Fixtures.Options
 {
     public class AESFixture
     {
-        public CryptoOptions.AES aesOptions { get; set; }
+        public CryptoOptions.AES AesOptions { get; set; }
 
         public AESFixture()
         {
-            aesOptions = ConfigurationsHelper.GetOption<CryptoOptions.AES>($"{nameof(CryptoOptions)}:{nameof(CryptoOptions.AES)}")!;
+            AesOptions = ConfigurationHelper.GetOption<CryptoOptions.AES>($"{nameof(CryptoOptions)}:{nameof(CryptoOptions.AES)}")!;
         }
     }
 }

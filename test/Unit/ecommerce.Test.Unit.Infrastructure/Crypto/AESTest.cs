@@ -11,7 +11,7 @@ namespace ecommerce.Test.Unit.Infrastructure.Crypto
 
         public AESTest(AESFixture aesFixture)
         {
-            aes = new AES(Options.Create(aesFixture.aesOptions));
+            aes = new AES(Options.Create(aesFixture.AesOptions));
         }
 
         [Theory]
