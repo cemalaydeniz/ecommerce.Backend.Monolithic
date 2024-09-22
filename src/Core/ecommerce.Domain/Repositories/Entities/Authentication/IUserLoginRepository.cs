@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
-namespace ecommerce.Application.Repositories.Entities.Authentication
+namespace ecommerce.Domain.Repositories.Entities.Authentication
 {
     public interface IUserLoginRepository : IBaseRepository<UserLogin, Guid>
     {

@@ -1,8 +1,7 @@
-﻿using ecommerce.Application.ViewModels.Common;
-using ecommerce.Domain.Entities.Account;
+﻿using ecommerce.Domain.Entities.Account;
 using ecommerce.Domain.Entities.Authentication;
 
-namespace ecommerce.Application.Repositories.Entities.Authentication
+namespace ecommerce.Domain.Repositories.Entities.Authentication
 {
     public interface IBuyerRepository : IUserRepository<Buyer>
     {
@@ -13,7 +12,7 @@ namespace ecommerce.Application.Repositories.Entities.Authentication
         /// <param name="pagination">Limitation of the returned data</param>
         /// <param name="cancellationToken">Token to check for the cancellation request</param>
         /// <returns>Returns the list of the addresses of the buyer if there is any, otherwise an empty list</returns>
-        Task<IEnumerable<Address>> GetAllAddressesById(Guid buyerId, Pagination pagination, CancellationToken cancellationToken = default);
+        Task<IEnumerable<Address>> GetAllAddressesById(Guid buyerId, int page, int pageSize, CancellationToken cancellationToken = default);
         /// <summary>
         /// Gets all addresses of the buyer by the buyer's email
         /// </summary>
@@ -21,6 +20,6 @@ namespace ecommerce.Application.Repositories.Entities.Authentication
         /// <param name="pagination">Limitation of the returned data</param>
         /// <param name="cancellationToken">Token to check for the cancellation request</param>
         /// <returns>Returns the list of the addresses of the buyer if there is any, otherwise an empty list</returns>
-        Task<IEnumerable<Address>> GetAllAddressesByEmail(string email, Pagination pagination, CancellationToken cancellationToken = default);
+        Task<IEnumerable<Address>> GetAllAddressesByEmail(string email, int page, int pageSize, CancellationToken cancellationToken = default);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using ecommerce.Domain.SeedWork;
 using Microsoft.EntityFrameworkCore;
 
-namespace ecommerce.Application.Repositories
+namespace ecommerce.Domain.Repositories
 {
     public interface IBaseRepository<TEntity, TKey>
         where TEntity : BaseEntity<TKey>

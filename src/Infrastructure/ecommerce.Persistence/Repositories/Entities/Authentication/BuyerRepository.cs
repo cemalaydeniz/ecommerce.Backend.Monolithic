@@ -1,5 +1,4 @@
-﻿using ecommerce.Application.ViewModels.Common;
-using ecommerce.Application.Repositories.Entities.Authentication;
+﻿using ecommerce.Domain.Repositories.Entities.Authentication;
 using ecommerce.Domain.Entities.Account;
 using ecommerce.Domain.Entities.Authentication;
 using ecommerce.Persistence.DbContexts;
@@ -104,21 +103,27 @@ namespace ecommerce.Persistence.Repositories.Entities.Authentication
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Address>> GetAllAddressesById(Guid buyerId, Pagination pagination, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Address>> GetAllAddressesById(Guid buyerId, int page, int pageSize, CancellationToken cancellationToken = default)
         {
             return await Table
                 .Where(b => b.Id.Equals(buyerId))
                 .Include(b => b.Addresses)
                 .SelectMany(b => b.Addresses)
+                .OrderBy(a => a.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<Address>> GetAllAddressesByEmail(string email, Pagination pagination, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Address>> GetAllAddressesByEmail(string email, int page, int pageSize, CancellationToken cancellationToken = default)
         {
             return await Table
                 .Where(b => b.Email != null && b.Email == email.ToLower())
                 .Include(b => b.Addresses)
                 .SelectMany(b => b.Addresses)
+                .OrderBy(a => a.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
         }
     }

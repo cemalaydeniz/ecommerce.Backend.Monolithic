@@ -1,6 +1,6 @@
 ﻿using ecommerce.Domain.Entities.Common;
 
-namespace ecommerce.Application.Repositories.Entities.Common
+namespace ecommerce.Domain.Repositories.Entities.Common
 {
     public interface IUploadedFileRepository<TEntity> : IBaseRepository<TEntity, Guid>
         where TEntity : UploadedFile

@@ -6,7 +6,6 @@ using ecommerce.Test.Utility;
 using ecommerce.Test.Utility.Fixtures;
 using Microsoft.EntityFrameworkCore;
 using ecommerce.Test.Utility.Entities.Account;
-using ecommerce.Application.ViewModels.Common;
 
 namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentication
 {
@@ -337,7 +336,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentic
             await buyerRepository.SaveChangesAsync();
 
             // Act
-            var result = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var result = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             // Assert
             Assert.Equal(3, result.Count());
@@ -355,7 +354,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentic
             await buyerRepository.SaveChangesAsync();
 
             // Act
-            var result = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var result = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             // Assert
             Assert.Empty(result);
@@ -368,7 +367,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentic
             Guid id = Guid.NewGuid();
 
             // Act
-            var result = await buyerRepository.GetAllAddressesById(id, new Pagination());
+            var result = await buyerRepository.GetAllAddressesById(id, 1, 10);
 
             // Assert
             Assert.Empty(result);
@@ -387,7 +386,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentic
             await buyerRepository.SaveChangesAsync();
 
             // Act
-            var result = await buyerRepository.GetAllAddressesByEmail(buyer.Email!, new Pagination());
+            var result = await buyerRepository.GetAllAddressesByEmail(buyer.Email!, 1, 10);
 
             // Assert
             Assert.Equal(3, result.Count());
@@ -405,7 +404,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentic
             await buyerRepository.SaveChangesAsync();
 
             // Act
-            var result = await buyerRepository.GetAllAddressesByEmail(buyer.Email!, new Pagination());
+            var result = await buyerRepository.GetAllAddressesByEmail(buyer.Email!, 1, 10);
 
             // Assert
             Assert.Empty(result);
@@ -418,7 +417,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Authentic
             string email = StringGenerator.Generate();
 
             // Act
-            var result = await buyerRepository.GetAllAddressesByEmail(email, new Pagination());
+            var result = await buyerRepository.GetAllAddressesByEmail(email, 1, 10);
 
             // Assert
             Assert.Empty(result);

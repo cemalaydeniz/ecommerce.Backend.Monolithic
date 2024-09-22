@@ -1,4 +1,4 @@
-﻿using ecommerce.Application.Repositories.Entities.Authentication;
+﻿using ecommerce.Domain.Repositories.Entities.Authentication;
 using ecommerce.Domain.Entities.Account;
 using ecommerce.Domain.Entities.Authentication;
 using ecommerce.Domain.Entities.Authentication.Enums;

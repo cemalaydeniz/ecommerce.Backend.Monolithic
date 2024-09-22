@@ -1,8 +1,7 @@
-﻿using ecommerce.Application.ViewModels.Common;
-using ecommerce.Domain.Entities.Authentication;
+﻿using ecommerce.Domain.Entities.Authentication;
 using System.Linq.Expressions;
 
-namespace ecommerce.Application.Repositories.Entities.Authentication
+namespace ecommerce.Domain.Repositories.Entities.Authentication
 {
     public interface IUserRoleRepository : IBaseRepository<UserRole, Guid>
     {
@@ -54,7 +53,7 @@ namespace ecommerce.Application.Repositories.Entities.Authentication
         /// <param name="orderBy">Expression to order the result</param>
         /// <param name="cancellationToken">Token to check for the cancellation request</param>
         /// <returns>Returns the list of the users if there is any, otherwise an empty list</returns>
-        Task<IEnumerable<User>> GetUsersByRoleId<T>(Guid roleId, Pagination pagination, Expression<Func<User, T>> orderBy, CancellationToken cancellationToken = default)
+        Task<IEnumerable<User>> GetUsersByRoleId<T>(Guid roleId, int page, int pageSize, Expression<Func<User, T>> orderBy, CancellationToken cancellationToken = default)
             where T : class;
         /// <summary>
         /// Gets the users that have a specific role by the role's ID
@@ -66,7 +65,7 @@ namespace ecommerce.Application.Repositories.Entities.Authentication
         /// <param name="orderBy">Expression to order the result</param>
         /// <param name="cancellationToken">Token to check for the cancellation request</param>
         /// <returns>Returns the list of the selected properties of the users if there is any, otherwise an empty list</returns>
-        Task<IEnumerable<T1>> GetUsersByRoleId<T1, T2>(Guid roleId, Expression<Func<User, T1>> select, Pagination pagination, Expression<Func<T1, T2>> orderBy, CancellationToken cancellationToken = default)
+        Task<IEnumerable<T1>> GetUsersByRoleId<T1, T2>(Guid roleId, Expression<Func<User, T1>> select, int page, int pageSize, Expression<Func<T1, T2>> orderBy, CancellationToken cancellationToken = default)
             where T1 : class
             where T2 : class;
         /// <summary>
@@ -77,7 +76,7 @@ namespace ecommerce.Application.Repositories.Entities.Authentication
         /// <param name="orderBy">Expression to order the result</param>
         /// <param name="cancellationToken">Token to check for the cancellation request</param>
         /// <returns>Returns the list of the users if there is any, otherwise an empty list</returns>
-        Task<IEnumerable<User>> GetUsersByRoleName<T>(string roleName, Pagination pagination, Expression<Func<User, T>> orderBy, CancellationToken cancellationToken = default)
+        Task<IEnumerable<User>> GetUsersByRoleName<T>(string roleName, int page, int pageSize, Expression<Func<User, T>> orderBy, CancellationToken cancellationToken = default)
             where T : class;
         /// <summary>
         /// Gets the users that have a specific role by the role's name
@@ -89,7 +88,7 @@ namespace ecommerce.Application.Repositories.Entities.Authentication
         /// <param name="orderBy">Expression to order the result</param>
         /// <param name="cancellationToken">Token to check for the cancellation request</param>
         /// <returns>Returns the list of the selected properties of the users if there is any, otherwise an empty list</returns>
-        Task<IEnumerable<T1>> GetUsersByRoleName<T1, T2>(string roleName, Expression<Func<User, T1>> select, Pagination pagination, Expression<Func<T1, T2>> orderBy, CancellationToken cancellationToken = default)
+        Task<IEnumerable<T1>> GetUsersByRoleName<T1, T2>(string roleName, Expression<Func<User, T1>> select, int page, int pageSize, Expression<Func<T1, T2>> orderBy, CancellationToken cancellationToken = default)
             where T1 : class
             where T2 : class;
     }

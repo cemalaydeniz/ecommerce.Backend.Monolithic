@@ -1,7 +1,7 @@
 ﻿using ecommerce.Domain.Entities.Authentication;
 using ecommerce.Domain.Entities.Authentication.Enums;
 
-namespace ecommerce.Application.Repositories.Entities.Authentication
+namespace ecommerce.Domain.Repositories.Entities.Authentication
 {
     public interface IUserTokenRepository : IBaseRepository<UserToken, Guid>
     {

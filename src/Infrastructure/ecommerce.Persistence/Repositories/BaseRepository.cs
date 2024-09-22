@@ -1,4 +1,4 @@
-﻿using ecommerce.Application.Repositories;
+﻿using ecommerce.Domain.Repositories;
 using ecommerce.Domain.SeedWork;
 using ecommerce.Persistence.DbContexts;
 using Microsoft.EntityFrameworkCore;

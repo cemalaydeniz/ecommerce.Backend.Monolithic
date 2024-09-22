@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
-namespace ecommerce.Application.Repositories.Entities.Account
+namespace ecommerce.Domain.Repositories.Entities.Account
 {
     public interface IAddressRepository : IBaseRepository<Address, Guid>
     {

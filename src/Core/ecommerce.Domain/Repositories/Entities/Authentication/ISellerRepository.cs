@@ -1,7 +1,7 @@
 ﻿using ecommerce.Domain.Entities.Account;
 using ecommerce.Domain.Entities.Authentication;
 
-namespace ecommerce.Application.Repositories.Entities.Authentication
+namespace ecommerce.Domain.Repositories.Entities.Authentication
 {
     public interface ISellerRepository : IUserRepository<Seller>
     {

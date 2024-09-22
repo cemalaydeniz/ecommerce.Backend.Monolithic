@@ -1,5 +1,4 @@
-﻿using ecommerce.Application.ViewModels.Common;
-using ecommerce.Domain.Entities.Account;
+﻿using ecommerce.Domain.Entities.Account;
 using ecommerce.Domain.Entities.Authentication;
 using ecommerce.Persistence.Repositories.Entities.Account;
 using ecommerce.Persistence.Repositories.Entities.Authentication;
@@ -54,7 +53,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Account
             int result = await addressRepository.SaveChangesAsync();
 
             // Assert
-            var updatedAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var updatedAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             Assert.True(result == 1, $"{result} row(s) are affected. It should have been 1");
             Assert.True(updatedAddresses.Count() == 1, "There is none or more than one address related to the user. It should have been only one address");
@@ -97,7 +96,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Account
                 .SetProperty(a => a.Country, newCountry));
 
             // Assert
-            var updatedAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var updatedAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             Assert.True(result == 1, $"{result} row(s) are affected. It should have been 1");
             Assert.NotNull(updatedAddresses);
@@ -160,7 +159,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Account
             int result = await addressRepository.SaveChangesAsync();
 
             // Assert
-            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             Assert.True(result == 1, $"{result} row(s) are affected. It should have been 1");
             Assert.Empty(userAddresses);
@@ -181,7 +180,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Account
             int result = await addressRepository.DeleteById(address.Id);
 
             // Assert
-            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             Assert.True(result == 1, $"{result} row(s) are affected. It should have been 1");
             Assert.Empty(userAddresses);
@@ -221,7 +220,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Account
             int result = await addressRepository.SaveChangesAsync();
 
             // Assert
-            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             Assert.True(result == 3, $"{result} row(s) are affected. It should have been 3");
             Assert.Empty(userAddresses);
@@ -247,7 +246,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Account
             int result = await addressRepository.DeleteAllById(addresses.Select(a => a.Id));
 
             // Assert
-            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             Assert.True(result == 3, $"{result} row(s) are affected. It should have been 3");
             Assert.Empty(userAddresses);
@@ -275,7 +274,7 @@ namespace ecommerce.Test.Integration.Persistence.Repositories.Entities.Account
             int result = await addressRepository.DeleteAllById(addresses.Select(a => a.Id));
 
             // Assert
-            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, new Pagination());
+            var userAddresses = await buyerRepository.GetAllAddressesById(buyer.Id, 1, 10);
 
             Assert.True(result == 3, $"{result} row(s) are affected. It should have been 3");
             Assert.Empty(userAddresses);

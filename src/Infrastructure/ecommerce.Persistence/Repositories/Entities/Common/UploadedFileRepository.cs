@@ -1,4 +1,4 @@
-﻿using ecommerce.Application.Repositories.Entities.Common;
+﻿using ecommerce.Domain.Repositories.Entities.Common;
 using ecommerce.Domain.Entities.Common;
 using ecommerce.Persistence.DbContexts;
 using ecommerce.Persistence.Extensions.EFCore;

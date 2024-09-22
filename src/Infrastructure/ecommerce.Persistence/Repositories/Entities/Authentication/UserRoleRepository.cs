@@ -1,5 +1,4 @@
-﻿using ecommerce.Application.ViewModels.Common;
-using ecommerce.Application.Repositories.Entities.Authentication;
+﻿using ecommerce.Domain.Repositories.Entities.Authentication;
 using ecommerce.Domain.Entities.Authentication;
 using ecommerce.Persistence.DbContexts;
 using Microsoft.EntityFrameworkCore;
@@ -51,19 +50,19 @@ namespace ecommerce.Persistence.Repositories.Entities.Authentication
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<User>> GetUsersByRoleId<T>(Guid roleId, Pagination pagination, Expression<Func<User, T>> orderBy, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<User>> GetUsersByRoleId<T>(Guid roleId, int page, int pageSize, Expression<Func<User, T>> orderBy, CancellationToken cancellationToken = default)
             where T : class
         {
             return await Table
                 .Where(r => r.Id.Equals(roleId))
                 .SelectMany(r => r.Users)
                 .OrderBy(orderBy)
-                .Skip((pagination.CurrentPage - 1) * pagination.PageSize)
-                .Take(pagination.PageSize)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<T1>> GetUsersByRoleId<T1, T2>(Guid roleId, Expression<Func<User, T1>> select, Pagination pagination, Expression<Func<T1, T2>> orderBy, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<T1>> GetUsersByRoleId<T1, T2>(Guid roleId, Expression<Func<User, T1>> select, int page, int pageSize, Expression<Func<T1, T2>> orderBy, CancellationToken cancellationToken = default)
             where T1 : class
             where T2 : class
         {
@@ -72,24 +71,24 @@ namespace ecommerce.Persistence.Repositories.Entities.Authentication
                 .SelectMany(r => r.Users)
                 .Select(select)
                 .OrderBy(orderBy)
-                .Skip((pagination.CurrentPage - 1) * pagination.PageSize)
-                .Take(pagination.PageSize)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<User>> GetUsersByRoleName<T>(string roleName, Pagination pagination, Expression<Func<User, T>> orderBy, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<User>> GetUsersByRoleName<T>(string roleName, int page, int pageSize, Expression<Func<User, T>> orderBy, CancellationToken cancellationToken = default)
             where T : class
         {
             return await Table
                 .Where(r => r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase))
                 .SelectMany(r => r.Users)
                 .OrderBy(orderBy)
-                .Skip((pagination.CurrentPage - 1) * pagination.PageSize)
-                .Take(pagination.PageSize)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
         }
 
-        public async Task<IEnumerable<T1>> GetUsersByRoleName<T1, T2>(string roleName, Expression<Func<User, T1>> select, Pagination pagination, Expression<Func<T1, T2>> orderBy, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<T1>> GetUsersByRoleName<T1, T2>(string roleName, Expression<Func<User, T1>> select, int page, int pageSize, Expression<Func<T1, T2>> orderBy, CancellationToken cancellationToken = default)
             where T1 : class
             where T2 : class
         {
@@ -98,8 +97,8 @@ namespace ecommerce.Persistence.Repositories.Entities.Authentication
                 .SelectMany(r => r.Users)
                 .Select(select)
                 .OrderBy(orderBy)
-                .Skip((pagination.CurrentPage - 1) * pagination.PageSize)
-                .Take(pagination.PageSize)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync(cancellationToken);
         }
     }

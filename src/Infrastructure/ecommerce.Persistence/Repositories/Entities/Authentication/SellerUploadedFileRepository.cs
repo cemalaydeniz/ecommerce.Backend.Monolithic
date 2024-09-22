@@ -1,4 +1,4 @@
-﻿using ecommerce.Application.Repositories.Entities.Authentication;
+﻿using ecommerce.Domain.Repositories.Entities.Authentication;
 using ecommerce.Domain.Entities.Authentication;
 using ecommerce.Persistence.DbContexts;
 using ecommerce.Persistence.Extensions.EFCore;
